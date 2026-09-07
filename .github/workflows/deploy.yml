@@ -30,7 +30,7 @@ jobs:
         run: mvn clean package -DskipTests
 
       - name: Run tests (skipped in CI - no MySQL)
-        run: echo "✓ Tests require MySQL. Run locally with: mvn test"
+        run: echo "Tests require MySQL. Run locally with: mvn test"
         continue-on-error: true
 
       - name: Set up Docker Buildx
@@ -96,5 +96,5 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Enable GitHub Dependabot
-        run: echo "✓ GitHub Dependabot will scan dependencies. Enable in Settings → Security & Analysis"
+        run: echo "GitHub Dependabot will scan dependencies. Enable in Settings → Security & Analysis"
         continue-on-error: true
