@@ -1,0 +1,12 @@
+target/
+.git/
+.gitignore
+.mvn/
+*.jar
+*.md
+.idea/
+.DS_Store
+*.log
+node_modules/
+src/test/
+.github/
