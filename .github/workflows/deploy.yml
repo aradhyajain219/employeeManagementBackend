@@ -92,5 +92,5 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Enable GitHub Dependabot
-        run: echo "GitHub Dependabot will scan dependencies. Enable in Settings → Security & Analysis"
+        run: echo "GitHub Dependabot will scan dependencies. Enable in Settings - Security & Analysis"
         continue-on-error: true
