@@ -1,31 +1,14 @@
 # Quick Start for GitHub Deployment
 
-## 📝 TL;DR - Just follow these 3 steps:
+## 📝 TL;DR - Just 2 steps! (No Docker Hub needed)
 
-### 1️⃣ Initialize Git & Push
-```bash
-git init
-git add .
-git commit -m "Initial commit with GitHub Actions setup"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/ems-backend.git
-git push -u origin main
-```
+### 1️⃣ ✅ Git & Push (Already Done!)
+Code is already pushed to: https://github.com/aradhyajain219/employeeManagementBackend
 
-### 2️⃣ Add Secrets to GitHub
-**Go to:** GitHub Repo → Settings → Secrets and variables → Actions
-
-Add these 2 secrets:
-```
-DOCKER_USERNAME = your_docker_hub_username
-DOCKER_PASSWORD = your_docker_hub_access_token
-```
-
-> Get token from: https://hub.docker.com/settings/security → New Access Token
-
-### 3️⃣ That's It! 🎉
-- Push code → Workflow runs automatically
-- Image published to Docker Hub as: `your_username/ems-backend:latest`
+### 2️⃣ That's It! 🎉 (Automatic!)
+- Workflow runs automatically on push
+- Image published to GitHub Container Registry (ghcr.io)
+- **NO secrets needed** - GitHub token is automatic!
 
 ---
 
@@ -39,17 +22,25 @@ Your GitHub Actions will run on:
 
 ---
 
-## 📦 Using Docker Image
+## 📦 Using Docker Image (from GitHub Container Registry)
 
 After workflow completes, pull and run:
 
 ```bash
-docker pull your_username/ems-backend:latest
+# Login to GitHub Container Registry (one time)
+docker login ghcr.io
+# Username: your_github_username
+# Password: your_github_personal_access_token (or just press Enter)
+
+# Pull image
+docker pull ghcr.io/aradhyajain219/employeeManagementBackend:latest
+
+# Run it
 docker run -p 8081:8081 \
   -e SPRING_DATASOURCE_URL=jdbc:mysql://your_host:3306/ems \
   -e SPRING_DATASOURCE_USERNAME=root \
   -e SPRING_DATASOURCE_PASSWORD=8085829423 \
-  your_username/ems-backend:latest
+  ghcr.io/aradhyajain219/employeeManagementBackend:latest
 ```
 
 ---
